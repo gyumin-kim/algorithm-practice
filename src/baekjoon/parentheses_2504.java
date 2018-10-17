@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 /**
+ * https://www.acmicpc.net/problem/2504
  * 문제 해결의 아이디어 자체는 LIFO의 특성을 지니는 stack 개념을 적용하였으나,
  * Deque interface를 구현한 LinkedList를 Stack 대신 사용하였으며, 그 객체의 이름을 간단히 stack이라고 붙임.
  * 구현하는 과정에서는 Stack에서의 push, pop, peek 대신 LinkedList의 addLast, removeLast, peekLast를 사용함.
