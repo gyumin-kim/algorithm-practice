@@ -9,7 +9,7 @@ import java.util.Scanner;
  * Deque interface를 구현한 LinkedList를 Stack 대신 사용하였으며, 그 객체의 이름을 간단히 stack이라고 붙임.
  * 구현하는 과정에서는 Stack에서의 push, pop, peek 대신 LinkedList의 addLast, removeLast, peekLast를 사용함.
  */
-public class parentheses_2504 {
+public class Parentheses_2504 {
     public static void main(String[] args) {
         LinkedList<String> stack = new LinkedList<>();
         Scanner in = new Scanner(System.in);
