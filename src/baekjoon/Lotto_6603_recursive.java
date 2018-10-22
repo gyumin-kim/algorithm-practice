@@ -3,6 +3,7 @@ package baekjoon;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * https://www.acmicpc.net/problem/6603
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 public class Lotto_6603_recursive {
     private static final int LOTTO_BALL_COUNT = 6;
 
-    public static void pick(int n, int[] inputNums, ArrayList<Integer> pickedList, int leftCount, int start) {
+    public static void pick(int n, int[] inputNums, List<Integer> pickedList, int leftCount, int start) {
         // base case
         if (leftCount == 0) { printList(pickedList); return; }
 
@@ -24,14 +25,14 @@ public class Lotto_6603_recursive {
         }
     }
 
-    public static void printList(ArrayList<Integer> list) {
+    public static void printList(List<Integer> list) {
         for (int num : list)
             System.out.print(num + " ");
         System.out.println();
     }
 
     public static void main(String[] args) throws Exception {
-        ArrayList<Integer> pickedlist = new ArrayList<>();
+        List<Integer> pickedlist = new ArrayList<>();
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
