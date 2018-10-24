@@ -13,14 +13,18 @@ import java.util.List;
  */
 public class Lotto_6603_recursive {
     private static final int LOTTO_BALL_COUNT = 6;
+    private static int n;
 
-    public static void pick(int n, int[] inputNums, List<Integer> pickedList, int leftCount, int start) {
+    public static void pick(int[] inputNums, List<Integer> pickedList, int start) {
         // base case
-        if (leftCount == 0) { printList(pickedList); return; }
+        if (pickedList.size() == LOTTO_BALL_COUNT) {
+            printList(pickedList);
+            return;
+        }
 
         for (int i = start; i < n; i++) {
             pickedList.add(inputNums[i]);
-            pick(n, inputNums, pickedList, leftCount-1, (start++)+1);
+            pick(inputNums, pickedList, (start++)+1);
             pickedList.remove(pickedList.size()-1);
         }
     }
@@ -32,23 +36,22 @@ public class Lotto_6603_recursive {
     }
 
     public static void main(String[] args) throws Exception {
-        List<Integer> pickedlist = new ArrayList<>();
-
+        List<Integer> pickedList = new ArrayList<>();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         while (true) {
-            // n개의 수를 inputNums에 담는다.
             String[] inputIntegers = br.readLine().split(" ");
-            int n = Integer.parseInt(inputIntegers[0]);
+            n = Integer.parseInt(inputIntegers[0]);
             if (n == 0) break;
 
             int[] inputNums = new int[n];
-            for (int i = 0; i < n; i++) {
+            // n개의 수를 inputNums에 담는다.
+            for (int i = 0; i < n; i++)
                 inputNums[i] = Integer.parseInt(inputIntegers[i + 1]);
-            }
 
-            pick(n, inputNums, pickedlist, LOTTO_BALL_COUNT, 0);
+            pick(inputNums, pickedList, 0);
             System.out.println();
         }
+        br.close();
     }
 }
