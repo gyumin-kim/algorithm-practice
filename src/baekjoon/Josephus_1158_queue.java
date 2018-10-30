@@ -24,10 +24,12 @@ public class Josephus_1158_queue {
             list.add(i);
 
         System.out.print("<");
+        // 요소를 삭제하면서 요소가 1개 남을 때까지 반복
         while (list.size() > 1) {
-            for (int i = 0; i < n-1; i++) {
+            // 맨 앞의 (n-1)개의 요소를 뒤로 붙임
+            for (int i = 0; i < n-1; i++)
                 list.addLast(list.removeFirst());
-            }
+            // 맨 앞의 요소를 출력하고 제거
             System.out.print(list.removeFirst() + ", ");
         }
         System.out.print(list.get(list.size()-1));
