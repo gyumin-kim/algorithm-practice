@@ -4,42 +4,31 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * https://www.acmicpc.net/problem/1158
- * 백준 제출 결과는 성공.
- * LinkedList의 특성을 전혀 활용하지 않는 풀이인 것 같아 개선이 필요함.
+ * LinkedList의 메소드를 활용하는 풀이
+ * 백준 제출 결과 시간 초과됨.
  */
-public class Josephus_1158 {
+public class Josephus_1158_improved {
     static void printAnswer(List<Integer> list, int m, int n) {
-        boolean[] isRemoved = new boolean[m];
 
         System.out.print("<");
-        int index = -1;
+        int index = 0;
         for (int i = 0; i < m-1; i++) {
-            for (int j = 0; j < n; j++) {
-                index++;
-                while (index < m && isRemoved[index])    index++;
-                if (index >= m) {
+            for (int j = 0; j < n-1; j++) {
+                try {
+                    index = list.indexOf(list.listIterator(++index).next());
+                } catch (NoSuchElementException ex) {
                     index = 0;
-                    if (isRemoved[index]) {
-                        while (index < m && isRemoved[index])
-                            index++;
-                    }
                 }
             }
-            isRemoved[index] = true;
             System.out.print(list.get(index) + ", ");
+            list.remove(index);
+            if (index >= list.size())   index = 0;
         }
-
-        int finalIndex = 0;
-        for (int i = 0; i < m; i++) {
-            if (!isRemoved[i]) {
-                finalIndex = i;
-                break;
-            }
-        }
-        System.out.print(list.get(finalIndex));
+        System.out.print(list.get(list.size()-1));
         System.out.println(">");
     }
 
