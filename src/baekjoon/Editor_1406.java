@@ -39,7 +39,7 @@ public class Editor_1406 {
                     if (pointer != 0)
                         sb.delete(pointer-1, pointer--);
                     break;
-                // 'extraStr'을 커서 왼쪽에 추가함
+                // 문자를 커서 왼쪽에 추가함
                 case 'P':
                     sb.insert(pointer++, command.charAt(2));
                     break;
