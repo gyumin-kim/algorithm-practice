@@ -4,24 +4,28 @@ import java.util.Arrays;
 
 public class KiwiJuiceEasy {
 
-  public static int[] thePouring(int[] capacities, int[] bottles, int[] fromId, int[] toId) {
+  private static int[] thePouring(int[] capacities, int[] bottles, int[] fromId, int[] toId) {
     int n = fromId.length;
 
     for (int i = 0; i < n; i++) {
+      int amount = Math.min(capacities[toId[i]] - bottles[toId[i]], bottles[fromId[i]]);
+      bottles[toId[i]] += amount;
+      bottles[fromId[i]] -= amount;
+
       // bottles[fromId[i]]이 비어있지 않은 경우
-      if (bottles[fromId[i]] > 0) {
-        // 더한 양이 capacities[toId[i]]보다 큰 경우
-        if (bottles[toId[i]] + bottles[fromId[i]] > capacities[toId[i]]) {
-          int amount = capacities[toId[i]] - bottles[toId[i]];
-          bottles[toId[i]] += amount;
-          bottles[fromId[i]] -= amount;
-        }
-        // 더해도 capacities[toId[i]]보다 작거나 같은 경우
-        else {
-          bottles[toId[i]] += bottles[fromId[i]];
-          bottles[fromId[i]] = 0;
-        }
-      }
+//      if (bottles[fromId[i]] > 0) {
+//        // 더한 양이 capacities[toId[i]]보다 큰 경우
+//        if (bottles[toId[i]] + bottles[fromId[i]] > capacities[toId[i]]) {
+////          int amount = capacities[toId[i]] - bottles[toId[i]];
+//          bottles[toId[i]] += amount;
+//          bottles[fromId[i]] -= amount;
+//        }
+//        // 더해도 capacities[toId[i]]보다 작거나 같은 경우
+//        else {
+//          bottles[toId[i]] += bottles[fromId[i]];
+//          bottles[fromId[i]] = 0;
+//        }
+//      }
     }
 
     return Arrays.copyOf(bottles, bottles.length);
@@ -34,8 +38,9 @@ public class KiwiJuiceEasy {
     int[] toId = {0, 1, 1, 3, 2};
     int[] answer = thePouring(capacities, bottles, fromId, toId);
 
-    for (int i : answer)
+    for (int i : answer) {
       System.out.print(i + " ");
+    }
     System.out.println();
   }
 }
