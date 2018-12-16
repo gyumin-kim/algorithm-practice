@@ -39,9 +39,9 @@ public class Parentheses_2504 {
 
     // 0번째 문자가 숫자이거나 닫는 괄호일 경우 -> 올바른 괄호열이 아님 -> 예외처리
     char firstChar = parenthesesString.charAt(0);
-      if (Character.isDigit(firstChar) || firstChar == ')' || firstChar == ']') {
-          return -1;
-      }
+    if (Character.isDigit(firstChar) || firstChar == ')' || firstChar == ']') {
+      return -1;
+    }
 
     // parenthesesString의 0번째부터 마지막 글자까지 반복한다
     for (int i = 0; i < stringLen; i++) {
@@ -54,67 +54,67 @@ public class Parentheses_2504 {
           break;
         case ')':
           // peek()한 결과가 "["
-            if (stack.peekLast().equals("[")) {
-                return -1;  // 올바른 괄호열이 아님 -> 예외처리
-            }
-            // peek()한 결과가 "("
-            else if (stack.peekLast().equals("(")) {
-                stack.removeLast();    // pop
-                stack.addLast("2"); // push
-            }
-            // peek()한 결과가 숫자
-            else if (Character.isDigit(stack.peekLast().charAt(0))) {
-                // ')' 다음에 숫자가 있고, 맨 밑까지 '('가 없는 경우 -> 올바른 괄호열이 아님 -> 예외처리
-                if (stack.size() < 2) {
-                    return -1;
-                } else {
-                    boolean isPaired = false;
-                    for (int j = stack.size() - 1; j >= 0; j--) {
-                        if (stack.get(j).charAt(0) == '(') {
-                            isPaired = true;
-                            break;
-                        }
-                    }
-                    if (!isPaired) {
-                        return -1;
-                    }
+          if (stack.peekLast().equals("[")) {
+            return -1;  // 올바른 괄호열이 아님 -> 예외처리
+          }
+          // peek()한 결과가 "("
+          else if (stack.peekLast().equals("(")) {
+            stack.removeLast();    // pop
+            stack.addLast("2"); // push
+          }
+          // peek()한 결과가 숫자
+          else if (Character.isDigit(stack.peekLast().charAt(0))) {
+            // ')' 다음에 숫자가 있고, 맨 밑까지 '('가 없는 경우 -> 올바른 괄호열이 아님 -> 예외처리
+            if (stack.size() < 2) {
+              return -1;
+            } else {
+              boolean isPaired = false;
+              for (int j = stack.size() - 1; j >= 0; j--) {
+                if (stack.get(j).charAt(0) == '(') {
+                  isPaired = true;
+                  break;
                 }
-                int tmp = Integer.parseInt(stack.removeLast());
-                stack.removeLast();            // pop
-                stack.addLast(2 * tmp + "");  // push
+              }
+              if (!isPaired) {
+                return -1;
+              }
             }
+            int tmp = Integer.parseInt(stack.removeLast());
+            stack.removeLast();            // pop
+            stack.addLast(2 * tmp + "");  // push
+          }
           break;
         case ']':
           // peek()한 결과가 "("
-            if (stack.peekLast().equals("(")) {
-                return -1;  // 올바른 괄호열이 아님 -> 예외처리
-            }
-            // peek()한 결과가 "["
-            else if (stack.peekLast().equals("[")) {
-                stack.removeLast();    // pop
-                stack.addLast("3"); // push
-            }
-            // peek()한 결과가 숫자
-            else if (Character.isDigit(stack.peekLast().charAt(0))) {
-                // ')' 다음에 숫자가 있고, 맨 밑까지 '('가 없는 경우 -> 올바른 괄호열이 아님 -> 예외처리
-                if (stack.size() < 2) {
-                    return -1;
-                } else {
-                    boolean isPaired = false;
-                    for (int j = stack.size() - 1; j >= 0; j--) {
-                        if (stack.get(j).charAt(0) == '[') {
-                            isPaired = true;
-                            break;
-                        }
-                    }
-                    if (!isPaired) {
-                        return -1;
-                    }
+          if (stack.peekLast().equals("(")) {
+            return -1;  // 올바른 괄호열이 아님 -> 예외처리
+          }
+          // peek()한 결과가 "["
+          else if (stack.peekLast().equals("[")) {
+            stack.removeLast();    // pop
+            stack.addLast("3"); // push
+          }
+          // peek()한 결과가 숫자
+          else if (Character.isDigit(stack.peekLast().charAt(0))) {
+            // ')' 다음에 숫자가 있고, 맨 밑까지 '('가 없는 경우 -> 올바른 괄호열이 아님 -> 예외처리
+            if (stack.size() < 2) {
+              return -1;
+            } else {
+              boolean isPaired = false;
+              for (int j = stack.size() - 1; j >= 0; j--) {
+                if (stack.get(j).charAt(0) == '[') {
+                  isPaired = true;
+                  break;
                 }
-                int tmp = Integer.parseInt(stack.removeLast());
-                stack.removeLast();            // pop
-                stack.addLast(3 * tmp + "");  // push
+              }
+              if (!isPaired) {
+                return -1;
+              }
             }
+            int tmp = Integer.parseInt(stack.removeLast());
+            stack.removeLast();            // pop
+            stack.addLast(3 * tmp + "");  // push
+          }
           break;
       }
 
@@ -124,9 +124,9 @@ public class Parentheses_2504 {
         while (stack.size() > 0) {
           String last = stack.removeLast();
           value += Integer.parseInt(last);
-            if (last.equals("[") || last.equals("]") || last.equals("(") || last.equals(")")) {
-                return -1;
-            }
+          if (last.equals("[") || last.equals("]") || last.equals("(") || last.equals(")")) {
+            return -1;
+          }
         }
       }
 
@@ -141,9 +141,9 @@ public class Parentheses_2504 {
     }
 
     // stack의 처음부터 끝까지 반복한다
-      while (!stack.isEmpty()) {
-          value += Integer.parseInt(stack.removeLast());
-      }
+    while (!stack.isEmpty()) {
+      value += Integer.parseInt(stack.removeLast());
+    }
 
     return value;
   }
