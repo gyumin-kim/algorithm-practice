@@ -1,5 +1,6 @@
 package topcoder;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
 public class InterestingDigits {
@@ -45,8 +46,45 @@ public class InterestingDigits {
     return answer;
   }
 
+  /**
+   * 0부터 마지막 수까지 일일이 검사하는 방법
+   */
+  private static int[] digits2(int base) {
+    ArrayList<Integer> list = new ArrayList<>();
+
+    for (int n = 2; n < base; n++) {
+      boolean flag = true;
+      for (int i = 0; i < base; i++) {
+        for (int j = 0; j < base; j++) {
+          for (int k = 0; k < base; k++) {
+            if ((i * base * base + j * base + k) % n == 0 && (i + j + k) % n != 0) {
+              flag = false;
+              break;
+            }
+          }
+          if (!flag) {
+            break;
+          }
+        }
+        if (!flag) {
+          break;
+        }
+      }
+      if (flag) {
+        list.add(n);
+      }
+    }
+
+    int len = list.size();
+    int[] answer = new int[len];
+    for (int i = 0; i < len; i++) {
+      answer[i] = list.get(i);
+    }
+    return answer;
+  }
+
   public static void main(String[] args) {
-    int[] answer = digits(26);
+    int[] answer = digits2(26);
     for (int num : answer) {
       System.out.print(num + " ");
     }
