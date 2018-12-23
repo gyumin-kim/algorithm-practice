@@ -83,8 +83,28 @@ public class InterestingDigits {
     return answer;
   }
 
+  /**
+   * 각 자릿수의 합이 n으로 나누어 떨어지면, 그 수는 n의 배수라는 성질을 이용 탑코더 108p 참조
+   */
+  private static int[] digits3(int base) {
+
+    ArrayList<Integer> list = new ArrayList<>();
+    for (int i = 2; i < base; i++) {
+      if ((base - 1) % i == 0) {
+        list.add(i);
+      }
+    }
+
+    int len = list.size();
+    int[] answer = new int[len];
+    for (int i = 0; i < len; i++) {
+      answer[i] = list.get(i);
+    }
+    return answer;
+  }
+
   public static void main(String[] args) {
-    int[] answer = digits2(26);
+    int[] answer = digits3(26);
     for (int num : answer) {
       System.out.print(num + " ");
     }
