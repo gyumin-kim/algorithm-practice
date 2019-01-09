@@ -32,12 +32,18 @@ public class CrazyBot {
 //    return 100.0 - failProbability;
   }
 
-  public static void dfs(int x, int y, double p) {
+  public static void dfs(int x, int y, double p, int count) {
+    if (count >= 5) {
+      return;
+    }
     marked[x][y] = true;
     // i => 0:동, 1:서, 2:남, 3:북
     for (int i = 0; i < 4; i++) {
+//      int newX = x + dirX[i];
+//      int newY = x + dirY[i];
+//      if (newX < 10 && newX >= 0 && newY < 10 && newY >= 0 && !marked[newX][newY]) {
       if (!marked[x + dirX[i]][y + dirY[i]]) {
-        dfs(x + dirX[i], y + dirY[i], p * prob[i]);
+        dfs(x + dirX[i], y + dirY[i], p * prob[i], count++);
       } else {
         failProbability += (p * prob[i]);
       }
@@ -46,7 +52,7 @@ public class CrazyBot {
 
   public static void main(String[] args) {
     prob = getProbability(5, 18, 36, 25, 21);
-    dfs(5, 5, 1.0);
+    dfs(5, 5, 1.0, 0);
 
     System.out.println("성공율: " + (100.0 - failProbability));
   }
