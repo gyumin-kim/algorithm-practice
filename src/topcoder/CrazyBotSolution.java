@@ -10,6 +10,10 @@ public class CrazyBotSolution {
   static int vy[] = {0, 0, -1, 1};
   static double[] prob = new double[4];
 
+  /**
+   * n회 움직이므로, 높이가 n+1인 트리를 떠올린다. 한 노드는 동서남북 각 방향에 대한 4개의 자식 노드를 가진다. DFS 방식으로 계속 밑으로 내려가는데, 이미 방문한
+   * 노드이거나 맨 밑까지 도달한 경우 멈춘다.
+   */
   public static double getProbability(int n, int east, int west, int south, int north) {
     prob[0] = east / 100.0;
     prob[1] = west / 100.0;
