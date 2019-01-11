@@ -45,12 +45,12 @@ public class MazeMaker {
       for (int i = 0; i < moveLen; i++) {
         // if (인접한 점(w)이 아직 방문되지 않았으면)
         if (m + moveRow[i] >= 0 && m + moveRow[i] < moveLen
-            && n + moveRow[i] >= 0 && n + moveRow[i] < moveLen
-            && maze[m + moveRow[i]].charAt(n + moveRow[i]) == '.'
-            && !marked[m + moveRow[i]][n + moveRow[i]]) {
+            && n + moveCol[i] >= 0 && n + moveCol[i] < moveLen
+            && maze[m + moveRow[i]].charAt(n + moveCol[i]) == '.'
+            && !marked[m + moveRow[i]][n + moveCol[i]]) {
 
-          edgeTo[m + moveRow[i]][n + moveRow[i]] = "m,n";
-          marked[m + moveRow[i]][n + moveRow[i]] = true;
+          edgeTo[m + moveRow[i]][n + moveCol[i]] = "m,n";
+          marked[m + moveRow[i]][n + moveCol[i]] = true;
 
           // w를 queue에 넣는다.
           queueX.add(moveRow[i]);
@@ -64,7 +64,7 @@ public class MazeMaker {
     int longestPointY = Integer.parseInt(longestPoint[1]);
 
     // 가장 먼 곳에 도달할 수 없는 경우
-    if (!marked[longestPointX][longestPointY]) {
+    if (maze[longestPointX].charAt(longestPointY) == 'X') {
       return -1;
     }
     // 가장 먼 곳으로 가는 최단 경로의 길이를 리턴
