@@ -49,14 +49,20 @@ public class MazeMaker {
             && maze[m + moveRow[i]].charAt(n + moveCol[i]) == '.'
             && !marked[m + moveRow[i]][n + moveCol[i]]) {
 
-          edgeTo[m + moveRow[i]][n + moveCol[i]] = "m,n";
+          edgeTo[m + moveRow[i]][n + moveCol[i]] = m + "," + n;
           marked[m + moveRow[i]][n + moveCol[i]] = true;
 
           // w를 queue에 넣는다.
-          queueX.add(moveRow[i]);
-          queueY.add(moveCol[i]);
+          queueX.add(m + moveRow[i]);
+          queueY.add(n + moveCol[i]);
         }
       }
+    }
+    for (int i = 0; i < edgeTo.length; i++) {
+      for (int j = 0; j < edgeTo[0].length; j++) {
+        System.out.print(edgeTo[i][j] + " ");
+      }
+      System.out.println();
     }
 
     String[] longestPoint = longestPoint(mazeRowLen, mazeColLen, startRow, startCol).split(",");
