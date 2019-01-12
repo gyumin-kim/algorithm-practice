@@ -3,26 +3,18 @@ package topcoder;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-/**
- * 출발점에서 출발점을 제외한 모든 점 각각을 도착지로 하는 반복:
- * bfs()로 최단경로 구함
- * pathTo()로 경로 길이를 구함
- * 구한 경로 길이가 최대값인지 체크 후 교체
- */
 public class MazeMaker {
-
-  private static boolean[][] marked;
-  private static String[][] edgeTo;
 
   public static int longestPath(String[] maze, int startRow, int startCol,
       int[] moveRow, int[] moveCol) {
 
     int moveLen = moveRow.length;
-    // marked[][], edgeTo[][] 초기화
     int mazeRowLen = maze.length;
     int mazeColLen = maze[0].length();
-    marked = new boolean[mazeRowLen][mazeColLen];
-    edgeTo = new String[mazeRowLen][mazeColLen];
+    boolean[][] marked = new boolean[mazeRowLen][mazeColLen];
+    int[][] sum = new int[mazeRowLen][mazeColLen];
+
+    int max = 0;
 
     // quque 2개(queueX, queueY)를 만든다.
     Queue<Integer> queueX = new PriorityQueue<>();
@@ -37,6 +29,14 @@ public class MazeMaker {
     queueX.add(startRow);
     queueY.add(startCol);
 
+    // sum[][]의 모든 값을 -1로 초기화하고, 출발점은 0으로 한다.
+    for (int i = 0; i < mazeRowLen; i++) {
+      for (int j = 0; j < mazeColLen; j++) {
+        sum[i][j] = -1;
+      }
+    }
+    sum[startRow][startCol] = 0;
+
     // queue 2개가 모두 비워질 때까지 반복:
     while (!queueX.isEmpty() && !queueY.isEmpty()) {
       // dequeue해서 점 (m, n) 를 꺼낸다.
@@ -46,57 +46,37 @@ public class MazeMaker {
       // 꺼낸 점 (m, n) (maze[m].charAt(n))와 인접한 점들에 대해 반복:
       // 인접여부 판단: maze[m].charAt(n)에서 이동한 maze[m+moveRow[i]].charAt(n+moveRow[i])이 '.'인지 체크
       for (int i = 0; i < moveLen; i++) {
-        // if (인접한 점(w)이 아직 방문되지 않았으면)
-        if (m + moveRow[i] >= 0 && m + moveRow[i] < moveLen
-            && n + moveCol[i] >= 0 && n + moveCol[i] < moveLen
-            && maze[m + moveRow[i]].charAt(n + moveCol[i]) == '.'
-            && !marked[m + moveRow[i]][n + moveCol[i]]) {
+        int nextRow = m + moveRow[i];
+        int nextCol = n + moveCol[i];
+        // 인접한 점이 아직 방문되지 않았으면
+        // 인접한 점: 이동한 곳이 미로를 벗어나지 않는 곳이면서, 방문 가능한 곳('.')이며, 아직 방문하지 않은 곳
+        if (nextRow >= 0 && nextRow < mazeRowLen
+            && nextCol >= 0 && nextCol < mazeColLen
+            && maze[nextRow].charAt(nextCol) == '.'
+            && !marked[nextRow][nextCol]) {
 
-          edgeTo[m + moveRow[i]][n + moveCol[i]] = m + "," + n;
-          marked[m + moveRow[i]][n + moveCol[i]] = true;
+          marked[nextRow][nextCol] = true;
+          sum[nextRow][nextCol] = sum[m][n] + 1;
 
-          // w를 queue에 넣는다.
-          queueX.add(m + moveRow[i]);
-          queueY.add(n + moveCol[i]);
+          // 인접한 점을 queue에 넣는다.
+          queueX.add(nextRow);
+          queueY.add(nextCol);
         }
       }
     }
-    for (int i = 0; i < edgeTo.length; i++) {
-      for (int j = 0; j < edgeTo[0].length; j++) {
-        System.out.print(edgeTo[i][j] + " ");
+
+    // 정답 계산
+    for (int i = 0; i < mazeRowLen; i++) {
+      for (int j = 0; j < mazeColLen; j++) {
+        // 지나갈 수 있는 점('.')이지만 가지 못한 경우
+        if (maze[i].charAt(j) == '.' && sum[i][j] == -1) {
+          return -1;
+        }
+        max = Math.max(max, sum[i][j]);
       }
-      System.out.println();
     }
 
-    String[] longestPoint = longestPoint(mazeRowLen, mazeColLen, startRow, startCol).split(",");
-    int longestPointX = Integer.parseInt(longestPoint[0]);
-    int longestPointY = Integer.parseInt(longestPoint[1]);
-
-    // 가장 먼 곳에 도달할 수 없는 경우
-    if (maze[longestPointX].charAt(longestPointY) == 'X') {
-      return -1;
-    }
-    // 가장 먼 곳으로 가는 최단 경로의 길이를 리턴
-    else {
-      int pathLength = 0;
-      int tmpX = longestPointX;
-      int tmpY = longestPointY;
-      while (tmpX != startRow && tmpY != startCol) {
-        String[] nextPoint = edgeTo[tmpX][tmpY].split(",");
-        tmpX = Integer.parseInt(nextPoint[0]);
-        tmpY = Integer.parseInt(nextPoint[1]);
-        pathLength++;
-      }
-      return pathLength;
-    }
-  }
-
-  // (x, y)에서 가장 먼 점을 구하는 메소드
-  private static String longestPoint(int mazeRowLen, int mazeColLen, int x, int y) {
-    int tmpX = (x <= mazeRowLen / 2) ? mazeRowLen - 1 : 0;
-    int tmpY = (y <= mazeColLen / 2) ? mazeColLen - 1 : 0;
-
-    return tmpX + "," + tmpY;
+    return max;
   }
 
   public static void main(String[] args) {
@@ -108,9 +88,15 @@ public class MazeMaker {
         "X....X.",
         "......."
     };
-    int[] moveRow = {1, 0, -1, 0, -2, 1};
-    int[] moveCol = {0, -1, 0, 1, 3, 0};
+    String[] maze2 = {
+        "......."
+    };
+    String[] maze3 = {
+        "..X.X.X.X.X.X."
+    };
+    int[] moveRow = {1, 0, 1, 0, 1, 0};
+    int[] moveCol = {0, 1, 0, 1, 0, 1};
 
-    System.out.println(longestPath(maze, 5, 0, moveRow, moveCol));
+    System.out.println(longestPath(maze2, 0, 0, moveRow, moveCol));
   }
 }
