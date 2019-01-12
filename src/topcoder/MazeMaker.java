@@ -4,7 +4,10 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 
 /**
- * 출발점에서 출발점을 제외한 모든 점 각각을 도착지로 하는 반복: bfs()로 최단경로 구함 pathTo()로 경로 길이를 구함 구한 경로 길이가 최대값인지 체크 후 교체
+ * 출발점에서 출발점을 제외한 모든 점 각각을 도착지로 하는 반복:
+ * bfs()로 최단경로 구함
+ * pathTo()로 경로 길이를 구함
+ * 구한 경로 길이가 최대값인지 체크 후 교체
  */
 public class MazeMaker {
 
@@ -96,25 +99,15 @@ public class MazeMaker {
     return tmpX + "," + tmpY;
   }
 
-//  private static void bfs(int x, int y) {
-//
-//  }
-
-//  // v로 가는 최단경로의 길이를 구함
-//  private static int pathLengthTo(int x, int y) {
-//    if (!marked[x][y])  return -1;
-//    Deque<Integer> stack = new ArrayDeque<>();
-//    // TODO: 2차원 좌표 각각에 대한 변수를 2개로 따로 만들어야 할 듯?
-//    for ()
-//  }
-
   public static void main(String[] args) {
-    String[] maze = {".......",
+    String[] maze = {
+        ".......",
         "X.X.X..",
         "XXX...X",
         "....X..",
         "X....X.",
-        "......."};
+        "......."
+    };
     int[] moveRow = {1, 0, -1, 0, -2, 1};
     int[] moveCol = {0, -1, 0, 1, 3, 0};
 
