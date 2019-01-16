@@ -23,7 +23,6 @@ public class MyHashSet {
   public void add(int key) {
     int index = key % MODULAR;
     table[index].add(key);
-    List<>
   }
 
   public void remove(int key) {
