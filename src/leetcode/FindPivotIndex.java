@@ -41,4 +41,23 @@ public class FindPivotIndex {
 
     return -1;
   }
+
+  /**
+   * 전체를 다 더한 뒤, 왼쪽에서부터 합을 쌓아가면서 기존 합에서 왼쪽 합을 빼서 비교하는 방식.
+   * leetcode 제출 결과 runtime은 위의 풀이와 거의 차이 없다.
+   */
+  public int pivotIndexSolution(int[] nums) {
+    int sum = 0;
+    int leftsum = 0;
+
+    for (int x : nums)
+      sum += x;
+
+    for (int i = 0; i < nums.length; ++i) {
+      if (leftsum == sum - leftsum - nums[i]) return i;
+      leftsum += nums[i];
+    }
+
+    return -1;
+  }
 }
