@@ -15,7 +15,7 @@ public class SpiralMatrix_54 {
    * 종료하는 조건 부분이 좀 조잡한 것 같다.
    * 애초에 totalCount를 정확하게 계산할 수 있으면, 각 case마다 sum을 증가시키고 매번 검사하는 작업이 필요 없을 것이다.
    *
-   * Leetcode runtime: 1ms
+   * Leetcode runtime: 0ms ~ 2ms
    * time complexity: O(m*n), m과 n은 2차원 배열(matrix)의 각 length
    */
   public static List<Integer> spiralOrder(int[][] matrix) {
@@ -81,6 +81,41 @@ public class SpiralMatrix_54 {
     }
 
     return list;
+  }
+
+  /**
+   * 'Leetcode 50 COMMON INTERVIEW QUESTIONS'에서 제공한 solution
+   * 기본적인 아이디어는 거의 동일하나 반복문 내부 처리가 훨씬 깔끔하다.
+   */
+  public List<Integer> spiralOrderCleanCodeHandbookSolution(int[][] matrix) {
+    List<Integer> elements = new ArrayList<>();
+    if (matrix.length == 0) return elements;
+
+    int m = matrix.length;
+    int n = matrix[0].length;
+    int row = 0;
+    int col = -1;
+
+    while (true) {
+      for (int i = 0; i < n; i++) { // rightward
+        elements.add(matrix[row][++col]);
+      }
+      if (--m == 0) break;
+      for (int i = 0; i < m; i++) { // downward
+        elements.add(matrix[++row][col]);
+      }
+      if (--n == 0) break;
+      for (int i = 0; i < n; i++) { // leftward
+        elements.add(matrix[row][--col]);
+      }
+      if (--m == 0) break;
+      for (int i = 0; i < m; i++) { // upward
+        elements.add(matrix[--row][col]);
+      }
+      if (--n == 0) break;
+    }
+
+    return elements;
   }
 
   public static void main(String[] args) {
