@@ -1,4 +1,4 @@
-package programmers;
+package programmers.mockTest2th;
 
 import java.util.HashMap;
 import java.util.Map;

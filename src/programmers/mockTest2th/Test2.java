@@ -1,4 +1,4 @@
-package programmers;
+package programmers.mockTest2th;
 
 public class Test2 {
 
