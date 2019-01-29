@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.LinkedListCycle_141;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,7 +12,7 @@ import java.util.Set;
  * we use an integer pos which represents the position (0-indexed) in the linked list where tail connects to.
  * If pos is -1, then there is no cycle in the linked list.
  */
-public class LinkedListCycle_141 {
+public class Solution {
 
   class ListNode {
     int val;
