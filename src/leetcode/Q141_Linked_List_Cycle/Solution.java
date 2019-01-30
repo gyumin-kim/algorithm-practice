@@ -1,4 +1,4 @@
-package leetcode.LinkedListCycle_141;
+package leetcode.Q141_Linked_List_Cycle;
 
 import java.util.HashSet;
 import java.util.Set;

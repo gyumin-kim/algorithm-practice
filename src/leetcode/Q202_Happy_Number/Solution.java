@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.Q202_Happy_Number;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -8,7 +8,7 @@ import java.util.Set;
  * 방법이 무언가 있어야 한다. 그 방법은 계속 연산을 진행하다 보면 이전에 나왔던 수가 다시 나올 것이고, 그렇다면 더 이상의 반복은 의미가 없다. 따라서 이전에 나왔던 수를
  * Set에 담아 놓고, 반복문을 시작할 때마다 set.add()를 통해 존재 여부를 판단한 뒤 반복을 진행한다.
  */
-public class HappyNumber {
+public class Solution {
 
   public boolean isHappy(int n) {
     Set<Integer> set = new HashSet<>();

@@ -1,41 +1,35 @@
-package leetcode;
+package leetcode.Q705_Design_HashSet;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MyHashSet {
 
-  ArrayList[] table;
-  final int MODULAR = 97;
+  boolean[][] table;
 
   /**
    * Initialize your data structure here.
    */
   public MyHashSet() {
-    int length = MODULAR;
-    table = new ArrayList[length];
-
-    for (int i = 0; i < length; i++) {
-      table[i] = new ArrayList<>();
-    }
+    table = new boolean[1000][1000];
   }
 
   public void add(int key) {
-    int index = key % MODULAR;
-    table[index].add(key);
+    int index = key % 1000;
+    table[index][key/1000] = true;
   }
 
   public void remove(int key) {
-    int index = key % MODULAR;
-    table[index].remove(key);
+    int index = key % 1000;
+    table[index][key/1000] = false;
   }
 
   /**
    * Returns true if this set contains the specified element
    */
   public boolean contains(int key) {
-    int index = key % MODULAR;
-    return table[index].contains(key);
+    int index = key % 1000;
+    return table[index][key/1000];
   }
 }
 

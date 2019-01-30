@@ -1,9 +1,9 @@
-package leetcode;
+package leetcode.Q189_Rotate_Array;
 
 /**
  * https://leetcode.com/problems/rotate-array
  */
-public class RotateArray_189 {
+public class Solution {
 
   /**
    * brute-force스러운 방법

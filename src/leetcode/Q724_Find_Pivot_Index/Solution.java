@@ -1,9 +1,9 @@
-package leetcode;
+package leetcode.Q724_Find_Pivot_Index;
 
 /**
  * https://leetcode.com/explore/learn/card/array-and-string/201/introduction-to-array/1144/
  */
-public class FindPivotIndex {
+public class Solution {
 
   /**
    * 가운데 index부터 시작해서 좌우 합에 따라 어느 방향으로 가야할지 매번 검사하는 방식을 처음에 시도했으나,

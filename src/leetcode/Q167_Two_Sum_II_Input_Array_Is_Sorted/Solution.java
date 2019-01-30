@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.Q167_Two_Sum_II_Input_Array_Is_Sorted;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * https://leetcode.com/problems/two-sum-ii-input-array-is-sorted
  */
-public class TwoSumII_InputArrayIsSorted_167 {
+public class Solution {
 
   /**
    * TwoSum(https://leetcode.com/problems/two-sum/) 문제에서 풀었던 것처럼,

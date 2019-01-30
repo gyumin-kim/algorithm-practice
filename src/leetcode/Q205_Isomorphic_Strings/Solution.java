@@ -1,6 +1,6 @@
-package leetcode;
+package leetcode.Q205_Isomorphic_Strings;
 
-public class IsomorphicStrings {
+public class Solution {
 
   public static boolean isIsomorphic(String s, String t) {
 

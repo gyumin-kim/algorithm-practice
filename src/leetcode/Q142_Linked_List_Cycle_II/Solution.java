@@ -1,4 +1,4 @@
-package leetcode.LinkedListCycleII_142;
+package leetcode.Q142_Linked_List_Cycle_II;
 
 /**
  * https://leetcode.com/problems/linked-list-cycle-ii

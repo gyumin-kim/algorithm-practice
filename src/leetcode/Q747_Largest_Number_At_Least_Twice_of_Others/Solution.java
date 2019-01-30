@@ -1,8 +1,8 @@
-package leetcode;
+package leetcode.Q747_Largest_Number_At_Least_Twice_of_Others;
 
 import java.util.Arrays;
 
-public class LargestNumberAtLeastTwiceOfOthers {
+public class Solution {
 
   /**
    * 내장 메소드를 사용하여 배열을 copy하고 정렬한 다음, 가장 큰 두 개의 수를 판별하여 조건에 맞게 검사한다.

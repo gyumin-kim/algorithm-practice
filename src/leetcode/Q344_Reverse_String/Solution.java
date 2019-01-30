@@ -1,6 +1,6 @@
-package leetcode;
+package leetcode.Q344_Reverse_String;
 
-public class ReverseString_344 {
+public class Solution {
 
   /**
    * 가장 먼저 생각한 방법. 결과에는 문제가 없으나 library(StringBuilder)로부터 유발되는 overhead로 인해 속도가 약간 느리다. 그냥

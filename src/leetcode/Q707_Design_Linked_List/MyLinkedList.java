@@ -1,9 +1,9 @@
-package leetcode;
+package leetcode.Q707_Design_Linked_List;
 
 /**
  * https://leetcode.com/problems/design-linked-list
  */
-public class MyLinkedList_707 {
+public class MyLinkedList {
 
   public class Node {
     private int val;
@@ -19,7 +19,7 @@ public class MyLinkedList_707 {
   private int size;
 
   /** Initialize your data structure here. */
-  public MyLinkedList_707() {
+  public MyLinkedList() {
     this.head = null;
     this.size = 0;
   }

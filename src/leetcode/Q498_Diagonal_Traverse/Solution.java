@@ -1,9 +1,9 @@
-package leetcode;
+package leetcode.Q498_Diagonal_Traverse;
 
 /**
  * https://leetcode.com/problems/diagonal-traverse/
  */
-public class DiagonalTraverse_498 {
+public class Solution {
 
   /**
    * 규칙성을 발견하기 위해 고민하다가, 'diagonal traverse'로 구글링했더니 youtube에 기본적인 idea가 잘 설명된 영상이 많았다.

@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.Q001_Two_Sum;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * https://leetcode.com/problems/two-sum/
  */
-public class TwoSum_1 {
+public class Solution {
 
   public int[] twoSum(int[] nums, int target) {
     Map<Integer, Integer> map = new HashMap<>();

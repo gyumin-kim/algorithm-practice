@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.Q412_Fizz_Buzz;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * https://leetcode.com/problems/fizz-buzz/
  */
-public class FizzBuzz_412 {
+public class Solution {
 
   /**
    * 가장 직관적인 방법

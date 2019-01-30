@@ -1,8 +1,8 @@
-package leetcode;
+package leetcode.Q066_Plus_One;
 
 import java.util.Arrays;
 
-public class PlusOne {
+public class Solution {
 
   /**
    * 처음에는 배열 각 요소를 int로 변환하려고 했으나, 변환된 정수가 매우 큰 경우 int, long 범위 내에서 처리가 불가능하다.

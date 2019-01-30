@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.Q054_Spiral_Matrix;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * https://leetcode.com/problems/spiral-matrix/
  */
-public class SpiralMatrix_54 {
+public class Solution {
 
   /**
    * 가로, 세로를 각각 따로 보면, 한 변을 지날 때마다 다음 변에서는 길이가 1씩 줄어든다.

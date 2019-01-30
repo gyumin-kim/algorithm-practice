@@ -1,6 +1,6 @@
-package leetcode;
+package leetcode.Q028_Implement_strStr;
 
-public class ImplementStrStr_28 {
+public class Solution {
 
   /**
    * 풀다가 테스트케이스 통과에 실패해 결국 포기.

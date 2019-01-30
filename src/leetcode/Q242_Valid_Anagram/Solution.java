@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.Q242_Valid_Anagram;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * https://leetcode.com/problems/valid-anagram
  */
-public class ValidAnagram_242 {
+public class Solution {
 
   public boolean isAnagramHashMap(String s, String t) {
     if (s.length() != t.length()) {
