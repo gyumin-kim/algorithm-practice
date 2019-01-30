@@ -1,3 +1,3 @@
 # algorithm-practice
 
-All the algorithm problems I've tried.
+All algorithm problems implemented in Java, **especially from [Leetcode](https://leetcode.com/problemset/algorithms/)**.
