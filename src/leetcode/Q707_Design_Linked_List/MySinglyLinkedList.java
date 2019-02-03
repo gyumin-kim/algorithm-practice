@@ -3,7 +3,7 @@ package leetcode.Q707_Design_Linked_List;
 /**
  * https://leetcode.com/problems/design-linked-list
  */
-public class MyLinkedList {
+public class MySinglyLinkedList {
 
   public class Node {
     private int val;
@@ -19,7 +19,7 @@ public class MyLinkedList {
   private int size;
 
   /** Initialize your data structure here. */
-  public MyLinkedList() {
+  public MySinglyLinkedList() {
     this.head = null;
     this.size = 0;
   }
@@ -110,8 +110,8 @@ public class MyLinkedList {
 }
 
 /**
- * Your MyLinkedList object will be instantiated and called as such:
- * MyLinkedList obj = new MyLinkedList();
+ * Your MySinglyLinkedList object will be instantiated and called as such:
+ * MySinglyLinkedList obj = new MySinglyLinkedList();
  * int param_1 = obj.get(index);
  * obj.addAtHead(val);
  * obj.addAtTail(val);

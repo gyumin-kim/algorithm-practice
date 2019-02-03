@@ -110,8 +110,8 @@ public class MyLinkedList {
 }
 
 /**
- * Your MyLinkedList object will be instantiated and called as such:
- * MyLinkedList obj = new MyLinkedList();
+ * Your MySinglyLinkedList object will be instantiated and called as such:
+ * MySinglyLinkedList obj = new MySinglyLinkedList();
  * int param_1 = obj.get(index);
  * obj.addAtHead(val);
  * obj.addAtTail(val);
