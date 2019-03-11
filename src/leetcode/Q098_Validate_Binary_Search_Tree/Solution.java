@@ -38,7 +38,7 @@ public class Solution {
     return util2(root, null, null);
   }
 
-  public boolean util2(TreeNode root, Integer min, Integer max) {
+  private boolean util2(TreeNode root, Integer min, Integer max) {
     if (root == null) return true;
 
     return (min == null || root.val > min)
@@ -49,6 +49,8 @@ public class Solution {
 
   /**
    * In-order traversal
+   *
+   * In-order로 순회하면서, 현재 노드의 값이 직전에 방문했던 노드의 값보다 큰지 계속 조사한다.
    */
   private TreeNode prev;
   public boolean isValidBST3(TreeNode root) {
@@ -59,7 +61,7 @@ public class Solution {
   private boolean isMonotonicIncreasing(TreeNode p) {
     if (p == null)  return true;
     if (isMonotonicIncreasing(p.left)) {  // 왼쪽 자식들이 다 현재 node의 값보다 작은 경우(true가 리턴되어 올라온 경우)
-      if (prev != null && p.val <= prev.val)  return false; // 직전 node의 값보다 크지 않다면 false
+      if (prev != null && prev.val >= p.val)  return false; // 직전 node의 값보다 크지 않다면 false
       prev = p;
       return isMonotonicIncreasing(p.right);
     }
