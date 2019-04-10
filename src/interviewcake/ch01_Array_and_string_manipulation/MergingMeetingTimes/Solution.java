@@ -26,7 +26,7 @@ public class Solution {
     public Meeting(int startTime, int endTime) {
       // number of 30 min blocks past 9:00 am
       this.startTime = startTime;
-      this.endTime   = endTime;
+      this.endTime = endTime;
     }
 
     public int getStartTime() {
